@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event.ref_type == 'branch' }}
+    steps:
+
+    - name: Build the Docker image
+    - uses: actions/checkout@v3
+
+
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+    with:
+      context: .
+      file: dockerfile
+      tags: node:20-alpine
+      push: false
